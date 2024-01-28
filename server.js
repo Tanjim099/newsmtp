@@ -16,6 +16,12 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "Wow SMTP"
+    })
+})
 app.post("/sendmail", async (req, res) => {
     const { name, email, number, message, select, projectName } = req.body;
     if (!email || !name || !number) {
