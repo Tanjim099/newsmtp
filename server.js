@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
         message: "Wow SMTP"
     })
 })
-app.post("/sendmail", async (req, res) => {
+app.post("/", async (req, res) => {
     const { name, email, number, message, select, projectName } = req.body;
     if (!email || !name || !number) {
         res.status(501).send({
