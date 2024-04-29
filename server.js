@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     })
 })
 app.post("/", async (req, res) => {
-    const { name, email, number, message, select, projectName } = req.body;
+    const { name, email, number, message, select, projectName, to, form } = req.body;
     if (!email || !name || !number) {
         res.status(501).send({
             success: false,
@@ -32,8 +32,8 @@ app.post("/", async (req, res) => {
         return
     }
     const text = `Name:- ${name} \n Email:- ${email} \n Phone Number:- ${number} \n ${message ? `Message:- ${message}` : ""} \n ${select ? `Interested:- ${select}` : ""}`;
-    const subject = projectName || "Total Environment Over the Rainbow";
-    sendMail(email, subject, text);
+    const subject = projectName || "Undefined Project";
+    sendMail(email, subject, text, to, form);
     res.status(200).send({
         success: true,
         message: "Email sent successfully"

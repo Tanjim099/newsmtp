@@ -9,13 +9,12 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-async function sendMail(to, subject, text, html) {
-    const info = await transporter.sendMail({
-        from: "nde.alam404@gmail.com",
-        to: "nde.alam404@gmail.com",
+async function sendMail(subject, text, to, form) {
+    await transporter.sendMail({
+        from: form || "nde.alam404@gmail.com",
+        to: to || "nde.alam404@gmail.com",
         subject,
         text,
-        html,
     });
 };
 
