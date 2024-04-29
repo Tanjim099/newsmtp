@@ -10,12 +10,17 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendMail(subject, text, to, form) {
-    await transporter.sendMail({
-        from: form || "nde.alam404@gmail.com",
-        to: to || "nde.alam404@gmail.com",
-        subject,
-        text,
-    });
+    try {
+        console.log(subject, text, to, form)
+        await transporter.sendMail({
+            from: form || "nde.alam404@gmail.com",
+            to: to || "nde.alam404@gmail.com",
+            subject,
+            text,
+        });
+    } catch (error) {
+        throw new Error(error)
+    }
 };
 
 module.exports = sendMail

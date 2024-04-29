@@ -33,7 +33,7 @@ app.post("/", async (req, res) => {
     }
     const text = `Name:- ${name} \n Email:- ${email} \n Phone Number:- ${number} \n ${message ? `Message:- ${message}` : ""} \n ${select ? `Interested:- ${select}` : ""}`;
     const subject = projectName || "Undefined Project";
-    sendMail(email, subject, text, to, form);
+    sendMail(subject, text, to, form);
     res.status(200).send({
         success: true,
         message: "Email sent successfully"
